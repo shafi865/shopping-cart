@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item" id="itemOne">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default"><i id="minusBtn1" class="fas fa-minus"></i></button>
+                           <input id="one1" type="text" class="form-control text-center" value="1">
+                           <button class="btn btn-default"><i id="plusBtn1" class="fas fa-plus"></i></button>
+                        </div>
+                        <h5 id="item1Price">$1219</h5>
+                        <img id="removeItemOne" src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item" id="itemTwo">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1">
+                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5 id="item2Price">$59</h5>
+                        <img id="removeItemTwo" src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5 id="subTotal">$1,278</h5>
+                        <h5>$0</h5>
+                        <h5 id="grandTotal">$1,278</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+
+<script>
+
+   // remove item event handler
+   const removeItem1 = document.getElementById("removeItemOne");
+   removeItem1.addEventListener("click", function(){
+      removeCart("itemOne");
+   })
+        
+   const removeItem2 = document.getElementById("removeItemTwo");
+   removeItem2.addEventListener("click", function(){
+      removeCart("itemTwo");
+   })
+
+
+   function removeCart (id) {
+      const item = document.getElementById(id);
+      item.style.display = "none";
+   }
+
+
+
+// Plus Button Event handler
+   const increaseItem1 = document.getElementById("plusBtn1");
+   increaseItem1.addEventListener("click", function(){
+         
+         const item1 = document.getElementById("one1").value++;
+         const item1Total = document.getElementById("item1Price").innerText;
+         const itemOne = parseFloat(item1Total);
+         const addItemOne = itemOne + 1219;
+
+       
+         document.getElementById("item1Price").innerText = addItemOne;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const totalOne = parseFloat(subTotal);
+         const totalValue = totalOne +  1219;
+
+         document.getElementById("subTotal").innerText = totalValue;
+         document.getElementById("grandTotal").innerText = totalValue;
+
+   })
+   
+
+
+
+
+
+
+   
+
+</script>
+</body>
+</html>
